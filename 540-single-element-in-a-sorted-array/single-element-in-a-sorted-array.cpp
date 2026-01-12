@@ -1,8 +1,5 @@
 class Solution {
 public:
-    bool isEven(int n) {
-    return n % 2 == 0;
-    }
     int singleNonDuplicate(vector<int>& nums) {
         // (optimisatin through binary search )
         int n = nums.size();
