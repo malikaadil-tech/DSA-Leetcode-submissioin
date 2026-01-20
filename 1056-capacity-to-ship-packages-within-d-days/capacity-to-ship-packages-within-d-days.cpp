@@ -16,9 +16,7 @@ public:
         if(dayUsed > days){
             return false;
         }
-        else{
-            return true;
-        }
+        return true;
        
     }
     int shipWithinDays(vector<int>& weights, int days) {
