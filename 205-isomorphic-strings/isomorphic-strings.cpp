@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        // make two arrays 
+        int m1[256]={0};
+       int  m2[256]={0};
+        int n = s.size();
+        for(int i = 0;i<n;i++){
+            //check is there any mismatch 
+            if(m1[s[i]]!=m2[t[i]]) return false;
+
+            //update 
+            m1[s[i]]=i+1;
+            m2[t[i]]=i+1;
+        }
+        // no mismatch found
+        return true;
+    }
+};
