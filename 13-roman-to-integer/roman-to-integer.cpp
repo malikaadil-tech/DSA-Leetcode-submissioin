@@ -1,22 +1,26 @@
 class Solution {
+    int value(char c){
+    switch(c){
+        case 'I': return 1;
+        case 'V': return 5;
+        case 'X': return 10;
+        case 'L': return 50;
+        case 'C': return 100;
+        case 'D': return 500;
+        case 'M': return 1000;
+    } 
+    return 0;                                              
+}
 public:
     int romanToInt(string s) {
-        unordered_map<char,int> romanNo;
-      romanNo['I'] = 1;
-       romanNo['V'] = 5;
-       romanNo['X'] = 10;
-        romanNo['L'] = 50;
-        romanNo['C'] = 100;
-        romanNo['D'] = 500;
-        romanNo['M'] = 1000;
-        int intNo = 0;
-        for( int i=0;i<=s.length()-1;i++){
-            if((i==s.length()-1) || (romanNo[s[i]]>=romanNo[s[i+1]])){
-                intNo = intNo + romanNo[s[i]];
+        
+        int intNo = value(s[s.length()-1]);
+        for( int i=1;i<s.length();i++){
+            if(value(s[i])>value(s[i-1])){
+                intNo = intNo - value(s[i-1]);
             }
-            else if(i < s.length()-1 &&romanNo[s[i]]<romanNo[s[i+1]]){
-                intNo = intNo +( romanNo[s[i+1]]-romanNo[s[i]]);
-                i++;
+            else{
+                intNo = intNo + value(s[i-1]);
             }
         }
         return intNo;
